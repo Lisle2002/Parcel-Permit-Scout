@@ -1,0 +1,38 @@
+name: Request a county or city
+description: Ask for Parcel Permit Scout to support another permit website.
+title: "[County request] "
+labels: ["county request"]
+body:
+  - type: input
+    id: place
+    attributes:
+      label: County or city, and state
+      placeholder: Sarasota County, Florida
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Web address of its permit search
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: signin
+    attributes:
+      label: Can you search permits there without signing in?
+      options:
+        - "Yes, the search is public"
+        - "No, it needs an account"
+        - "Not sure"
+    validations:
+      required: true
+  - type: input
+    id: example
+    attributes:
+      label: One public parcel number or address you know has a permit there (optional)
+      description: It helps check the reader. Only public information, please.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else

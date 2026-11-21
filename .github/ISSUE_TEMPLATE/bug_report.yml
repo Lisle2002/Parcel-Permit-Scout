@@ -1,0 +1,42 @@
+name: Report a problem
+description: Something in Parcel Permit Scout did not work as expected.
+title: "[Problem] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please do **not** paste owner names, phone numbers, emails or anything private. Parcel numbers and public addresses are fine.
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      description: Shown at the top right of the extension (for example v1.0.0).
+      placeholder: v1.0.0
+    validations:
+      required: true
+  - type: input
+    id: portal
+    attributes:
+      label: County or city permit website
+      description: Its name and web address.
+      placeholder: Eagle County, Colorado - https://css.eaglecounty.us/EnerGov_Prod/SelfService
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Problem report
+      description: In the extension, press "Download problem report" (on the Activity log page), then drag the file here. It holds the versions and the run state, not your spreadsheet.
+  - type: input
+    id: browser
+    attributes:
+      label: Computer and Chrome version
+      placeholder: Mac, Chrome 131
