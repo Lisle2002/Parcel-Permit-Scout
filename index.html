@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Parcel Permit Scout: building permit and inspection checker for Chrome</title>
-<meta name="description" content="Parcel Permit Scout is a free, read-only Chrome extension that checks the building permits and inspections of every lot in your spreadsheet on county permit portals, and tells you which lots have nothing on record.">
+<meta name="description" content="Parcel Permit Scout is a free, read-only Chrome extension that checks the building permits and inspections of every lot in your spreadsheet on county and town permit portals, and tells you which lots have nothing on record.">
 <link rel="canonical" href="https://lisle2002.github.io/Parcel-Permit-Scout/">
 <link rel="icon" href="assets/favicon.png">
 <meta property="og:type" content="website">
@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://lisle2002.github.io/Parcel-Permit-Scout/assets/3-lots.png">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Parcel Permit Scout","applicationCategory":"BusinessApplication","operatingSystem":"Chrome","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Read-only Chrome extension that checks the building permits and inspections of the lots in your spreadsheet on county permit portals.","url":"https://lisle2002.github.io/Parcel-Permit-Scout/","downloadUrl":"https://chromewebstore.google.com/detail/imjobmedkffhnebdkklgjccndaiacgoi"}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Parcel Permit Scout","applicationCategory":"BusinessApplication","operatingSystem":"Chrome","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Read-only Chrome extension that checks the building permits and inspections of the lots in your spreadsheet on county and town permit portals.","softwareVersion":"1.4.4","url":"https://lisle2002.github.io/Parcel-Permit-Scout/","downloadUrl":"https://chromewebstore.google.com/detail/imjobmedkffhnebdkklgjccndaiacgoi"}
 </script>
 <style>
   :root { --bg: #f5f8f8; --card: #ffffff; --fg: #15262a; --muted: #55676b; --line: #dbe4e5; --brand: #0e4f56; --brand-fg: #eaf6f6; --gold: #f4b740; }
@@ -47,6 +47,11 @@
   th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
   .ok { font-weight: 650; }
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 24px; align-items: start; }
+  .split p:first-child { margin-top: 0; }
+  .split ul { padding-left: 1.2em; }
+  .note { color: var(--muted); font-size: 0.92rem; margin: 10px 0 0; }
+  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
   footer { border-top: 1px solid var(--line); padding-block: 22px 36px; color: var(--muted); font-size: 0.92rem; }
   footer a { margin-right: 16px; }
   @media (max-width: 560px) { .hero { grid-template-columns: 1fr; padding-block: 32px; } .hero img { width: 84px; height: 84px; } }
@@ -58,10 +63,10 @@
     <img src="assets/icon.svg" alt="Parcel Permit Scout icon: a surveyed lot under a magnifying glass" width="112" height="112">
     <div>
       <h1>Parcel Permit Scout</h1>
-      <p class="lead">A free Chrome extension that checks the building permits and inspections of every lot in your spreadsheet on the county's permit website, and tells you which lots have nothing on record.</p>
+      <p class="lead">A free Chrome extension that checks the building permits and inspections of every lot in your spreadsheet on the permit website of its county or town, and tells you which lots have nothing on record.</p>
       <div class="cta">
         <a class="btn main" href="https://chromewebstore.google.com/detail/imjobmedkffhnebdkklgjccndaiacgoi">Add to Chrome, free</a>
-        <a class="btn ghost" href="https://github.com/Lisle2002/Parcel-Permit-Scout/issues/new/choose">Report a problem or request a county</a>
+        <a class="btn ghost" href="https://github.com/Lisle2002/Parcel-Permit-Scout/issues/new/choose">Report a problem or request your county or town</a>
       </div>
     </div>
   </div>
@@ -79,17 +84,34 @@
 
   <section>
     <h2>Made for</h2>
-    <p>Builders, developers, land buyers and agents who would otherwise search a county permit site one parcel at a time.</p>
+    <p>Builders, developers, land buyers and agents who would otherwise search a permit website one parcel at a time.</p>
+  </section>
+
+  <section id="try-it">
+    <h2>Try it on real lots first</h2>
+    <div class="split">
+      <div>
+        <p>Before you load your own spreadsheet, press <b>Try it on real lots</b> on the extension's Home page. It reads six real sample lots on a real county permit portal in your own browser, the same way it reads your lots, and gives you the two files it makes:</p>
+        <ul>
+          <li><b>The call list</b>: the lots with no permit and no inspection on record, ready to work through, with the reason every other lot is not on it.</li>
+          <li><b>The research workbook</b>: every permit, inspection and search behind each answer.</li>
+        </ul>
+        <p>The sample lots are public land and one vacant commercial lot, so no one's home is involved. They are kept apart from your own lots and results.</p>
+      </div>
+      <figure><img src="assets/6-try-it.png" alt="The Home page with the Try it on real lots button" loading="lazy" width="1280" height="800"><figcaption>Try it on real lots, on the Home page</figcaption></figure>
+    </div>
   </section>
 
   <section>
     <h2>See it</h2>
     <div class="shots">
-      <figure><img src="assets/3-lots.png" alt="The call list of lots with no permit or inspection on record" loading="lazy" width="1280" height="800"><figcaption>The call list</figcaption></figure>
-      <figure><img src="assets/1-home.png" alt="The extension's home page after a practice run" loading="lazy" width="1280" height="800"><figcaption>After a run</figcaption></figure>
-      <figure><img src="assets/2-what-your-workbook-needs.png" alt="What a workbook needs, with an example" loading="lazy" width="1280" height="800"><figcaption>What your spreadsheet needs</figcaption></figure>
-      <figure><img src="assets/5-places.png" alt="Places and which portals are supported" loading="lazy" width="1280" height="800"><figcaption>Places and support</figcaption></figure>
+      <figure><img src="assets/3-lots.png" alt="The call list of lots with no permit or inspection on record (practice data)" loading="lazy" width="1280" height="800"><figcaption>The call list</figcaption></figure>
+      <figure><img src="assets/1-home.png" alt="The extension's Home page after a practice run" loading="lazy" width="1280" height="800"><figcaption>After a run</figcaption></figure>
+      <figure><img src="assets/4-results.png" alt="Downloading the results workbook" loading="lazy" width="1280" height="800"><figcaption>The downloads</figcaption></figure>
+      <figure><img src="assets/2-what-your-workbook-needs.png" alt="What a spreadsheet needs, with an example" loading="lazy" width="1280" height="800"><figcaption>What your spreadsheet needs</figcaption></figure>
+      <figure><img src="assets/5-places.png" alt="What the tool can do and which portals are supported" loading="lazy" width="1280" height="800"><figcaption>Places and support</figcaption></figure>
     </div>
+    <p class="note">These pictures use the extension's practice workspace: made-up lots, marked SIMULATED.</p>
   </section>
 
   <section>
@@ -105,15 +127,15 @@
         <tr><td>OpenGov (checked on the Town of Vail, CO)</td><td class="ok">Read this page, permits only: you search each lot and open its page, and the tool reads that page. It never searches these sites and never answers a "verify you are human" check.</td></tr>
       </tbody>
     </table></div>
-    <p>"Supported" means the reader was run live on that very portal; every place still runs a short pilot in your browser before a batch. A new county on the same software is "Experimental" until its own pilot passes. "Permits only" means that website shows the public no inspections. Want your county? <a href="https://github.com/Lisle2002/Parcel-Permit-Scout/issues/new?template=county_request.yml">Request it here</a>.</p>
+    <p>"Supported" means the reader was run live on that very portal; every place still runs a short pilot in your browser before a batch. A new county or town on the same software is "Experimental" until its own pilot passes. "Permits only" means that website shows the public no inspections. Want your county or town? <a href="https://github.com/Lisle2002/Parcel-Permit-Scout/issues/new?template=county_request.yml">Request it here</a>.</p>
   </section>
 
   <section>
     <h2>Read-only and private</h2>
     <div class="grid3">
-      <div class="card"><h3>Only reads</h3><p>It searches and reads. A guard refuses anything that would apply, submit, pay or change something on a county site.</p></div>
+      <div class="card"><h3>Only reads</h3><p>It searches and reads. A guard refuses anything that would apply, submit, pay or change something on a permit website.</p></div>
       <div class="card"><h3>Stays on your computer</h3><p>Your spreadsheet and every result stay in your browser. No account, no tracking, nothing uploaded. <a href="privacy.html">Privacy policy</a>.</p></div>
-      <div class="card"><h3>Your own sign-in</h3><p>It works in your own browser tab. If a county site needs you to sign in, you sign in yourself; it never sees your password.</p></div>
+      <div class="card"><h3>Your own sign-in</h3><p>It works in your own browser tab. If a permit website needs you to sign in, you sign in yourself; it never sees your password.</p></div>
     </div>
   </section>
 
@@ -121,9 +143,14 @@
     <h2>Get started</h2>
     <ol class="steps">
       <li><a href="https://chromewebstore.google.com/detail/imjobmedkffhnebdkklgjccndaiacgoi">Add Parcel Permit Scout to Chrome</a> and open it from its toolbar icon.</li>
-      <li>Try the practice workspace first: it uses made-up data and never touches a real site.</li>
-      <li>Load your spreadsheet, open the county's permit site in a tab, and start with a short pilot run.</li>
+      <li>Press <b>Try it on real lots</b> on its Home page to see a real run and the two files it makes. There is also a practice workspace with made-up data that never touches a real site.</li>
+      <li>Load your spreadsheet, open the permit website of your county or town in a tab, and start with a short pilot run.</li>
     </ol>
+  </section>
+
+  <section>
+    <h2>What's new</h2>
+    <p><b>Version 1.4.4</b> (25 November 2026): <b>Try it on real lots</b> reads six real sample lots and gives you both files before you use your own; an empty call list says why in the file; the wording fits every portal, county or town; and a check on the Town of Vail's live website confirmed how an address with no records is read.</p>
   </section>
 
   <section>

@@ -11,14 +11,14 @@ body:
     id: version
     attributes:
       label: Extension version
-      description: Shown at the top right of the extension (for example v1.0.0).
-      placeholder: v1.0.0
+      description: Shown at the top right of the extension (for example v1.4.4).
+      placeholder: v1.4.4
     validations:
       required: true
   - type: input
     id: portal
     attributes:
-      label: County or city permit website
+      label: County or town permit website
       description: Its name and web address.
       placeholder: Eagle County, Colorado - https://css.eaglecounty.us/EnerGov_Prod/SelfService
     validations:

@@ -1,4 +1,4 @@
-name: Request a county or city
+name: Request a county or town
 description: Ask for Parcel Permit Scout to support another permit website.
 title: "[County request] "
 labels: ["county request"]
@@ -6,7 +6,7 @@ body:
   - type: input
     id: place
     attributes:
-      label: County or city, and state
+      label: County, city or town, and state
       placeholder: Sarasota County, Florida
     validations:
       required: true
